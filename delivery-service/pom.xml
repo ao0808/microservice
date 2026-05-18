@@ -10,8 +10,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>order-service</artifactId>
-    <name>order-service</name>
+    <artifactId>delivery-service</artifactId>
+    <name>delivery-service</name>
 
     <dependencies>
         <dependency>
