@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.soft.orderservice.dto.OrderRequest;
 import ru.soft.orderservice.dto.OrderResponse;
+import ru.soft.orderservice.integration.payment.dto.OrderPaymentDetails;
+import ru.soft.orderservice.integration.payment.dto.OrderPaymentRequest;
 import ru.soft.orderservice.service.OrderService;
 
 import java.util.List;
@@ -50,4 +52,12 @@ public class OrderController {
         log.info("Delete order {}", id);
         orderService.delete(id);
     }
+
+    @PostMapping("/{id}/paymant")
+    @ResponseStatus(HttpStatus.CREATED)
+    public OrderPaymentDetails createPayment(@PathVariable Long id,
+                                             @RequestBody OrderPaymentRequest orderPaymentRequest){
+       return orderService.createPayment(id, orderPaymentRequest);
+    }
+
 }

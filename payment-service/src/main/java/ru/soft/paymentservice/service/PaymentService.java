@@ -1,6 +1,7 @@
 package ru.soft.paymentservice.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.soft.paymentservice.dto.PaymentRequest;
@@ -12,6 +13,7 @@ import ru.soft.paymentservice.repository.PaymentRepository;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PaymentService {
@@ -48,6 +50,7 @@ public class PaymentService {
     public PaymentResponse update(Long id, PaymentRequest request) {
         Payment payment = getPayment(id);
         paymentMapper.updateEntity(payment, request);
+        log.info("Update payment: {}", payment);
         return paymentMapper.toResponse(paymentRepository.save(payment));
     }
 
