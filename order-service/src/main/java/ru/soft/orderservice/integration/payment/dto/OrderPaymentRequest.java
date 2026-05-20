@@ -6,11 +6,18 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Schema(description = "Запрос на создание платежа для существующего заказа")
+@Schema(description = "Запрос на создание платежа для существующего заказа (поля передаются в платёжный сервис)")
 public class OrderPaymentRequest {
-    Long sum;
-    //TODO по идее можно сделать в дальнейшем отлельные справочники и сделать связь
-    String method;
-    String status;
-    String amount;
+
+    @Schema(description = "Сумма (числовое значение)", example = "1500")
+    private Long sum;
+
+    @Schema(description = "Способ оплаты", example = "CARD")
+    private String method;
+
+    @Schema(description = "Статус (строка, как ожидает интеграция)", example = "PENDING")
+    private String status;
+
+    @Schema(description = "Сумма в строковом виде", example = "1500.00")
+    private String amount;
 }

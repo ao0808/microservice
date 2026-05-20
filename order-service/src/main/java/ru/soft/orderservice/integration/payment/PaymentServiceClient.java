@@ -11,7 +11,7 @@ public interface PaymentServiceClient {
 
     @PostMapping("/api/payments")
     PaymentCreateResponse createPayment(
-            @RequestHeader() String id,
+            @RequestHeader("X-Idempotency-Key") String id,
             @RequestBody PaymentCreateRequest paymentCreateRequest
     );
 }

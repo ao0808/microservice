@@ -60,7 +60,7 @@ public class OrderService {
     @Transactional
     public OrderPaymentDetails createPayment(Long id, OrderPaymentRequest orderPaymentRequest) {
         if (id == null || orderPaymentRequest == null) {
-            throw new IllegalArgumentException("Payment method must be provided");
+            throw new IllegalArgumentException("Order Payment Request is null");
         }
 
         Order order = getOrder(id);
