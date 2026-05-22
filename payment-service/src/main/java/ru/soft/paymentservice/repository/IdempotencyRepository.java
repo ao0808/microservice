@@ -10,7 +10,7 @@ import ru.soft.paymentservice.model.IdempotencyKey;
 import java.util.Optional;
 
 @Repository
-public interface IdempotencyRepository implements JpaRepository<IdempotencyKey, String> {
+public interface IdempotencyRepository extends JpaRepository<IdempotencyKey, String> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @NonNull
